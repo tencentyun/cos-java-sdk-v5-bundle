@@ -11,3 +11,4 @@
     
 ```
 
+cos-java-sdk-v5的使用请参考：https://www.qcloud.com/document/product/436/7751
