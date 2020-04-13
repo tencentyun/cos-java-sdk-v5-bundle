@@ -6,29 +6,69 @@
 
     <groupId>com.qcloud</groupId>
     <artifactId>cos_api-bundle</artifactId>
-    <version>5.6.18</version>
+    <version>5.6.19</version>
 
     <name>COS SDK for Java - Bundle</name>
-    <description>A single bundled dependency that includes all service and dependent JARs with third-party libraries relocated to different namespaces.</description>
+    <description>A single bundled dependency that includes all service and dependent JARs with third-party libraries
+        relocated to different namespaces.
+    </description>
+    <url>https://github.com/yuyang733/cos-java-sdk-v5-bundle</url>
+
+    <licenses>
+        <license>
+            <name>cos-java-sdk-bundle</name>
+            <url>https://github.com/yuyang733/cos-java-sdk-v5-bundle</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>iainyu</name>
+            <email>iainyu@tencent.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/yuyang733/cos-java-sdk-v5-bundle.git
+        </connection>
+        <developerConnection>
+            scm:git:https://github.com/yuyang733/cos-java-sdk-v5-bundle.git
+        </developerConnection>
+        <url>https://github.com/yuyang733/cos-java-sdk-v5</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.qcloud</groupId>
             <artifactId>cos_api</artifactId>
-            <version>5.6.18</version>
+            <version>5.6.19</version>
             <optional>false</optional>
         </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
-        </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>oss</id>
+            <name>cos-java-sdk-bundle</name>
+            <url>
+                https://oss.sonatype.org/service/local/staging/deploy/maven2
+            </url>
+        </repository>
+
+        <snapshotRepository>
+            <id>oss</id>
+            <name>cos-java-sdk-bundle</name>
+            <url>
+                https://oss.sonatype.org/content/repositories/snapshots
+            </url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -78,7 +118,11 @@
                             <shadedPattern>com.qcloud.cos.thirdparty.com.fasterxml</shadedPattern>
                         </relocation>
                     </relocations>
-
+                    <shadedArtifactAttached>false</shadedArtifactAttached>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
+                    <dependencyReducedPomLocation>${project.build.directory}/dependency-reduced-pom.xml
+                    </dependencyReducedPomLocation>
+                    <createSourcesJar>true</createSourcesJar>
                     <filters>
                         <filter>
                             <artifact>*:*</artifact>
@@ -90,6 +134,54 @@
                         </filter>
                     </filters>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <encoding>UTF-8</encoding>
+                    <charset>UTF-8</charset>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
