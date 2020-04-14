@@ -12,12 +12,12 @@
     <description>A single bundled dependency that includes all service and dependent JARs with third-party libraries
         relocated to different namespaces.
     </description>
-    <url>https://github.com/yuyang733/cos-java-sdk-v5-bundle</url>
+    <url>https://github.com/tencentyun/cos-java-sdk-v5-bundle</url>
 
     <licenses>
         <license>
             <name>cos-java-sdk-bundle</name>
-            <url>https://github.com/yuyang733/cos-java-sdk-v5-bundle</url>
+            <url>https://github.com/tencentyun/cos-java-sdk-v5-bundle</url>
         </license>
     </licenses>
 
@@ -29,12 +29,12 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/yuyang733/cos-java-sdk-v5-bundle.git
+        <connection>scm:git:https://github.com/tencentyun/cos-java-sdk-v5-bundle.git
         </connection>
         <developerConnection>
-            scm:git:https://github.com/yuyang733/cos-java-sdk-v5-bundle.git
+            scm:git:https://github.com/tencentyun/cos-java-sdk-v5-bundle.git
         </developerConnection>
-        <url>https://github.com/yuyang733/cos-java-sdk-v5</url>
+        <url>https://github.com/tencentyun/cos-java-sdk-v5-bundle</url>
     </scm>
 
     <properties>
