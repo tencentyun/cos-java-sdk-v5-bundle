@@ -147,9 +147,9 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>attach-javadocs</id>
+                        <id>resource-bundle</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>resource-bundle</goal>
                         </goals>
                     </execution>
                 </executions>
